@@ -1,28 +1,78 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container mx-auto mt-20">
+
+    <!-- Normal Input -->
+    <div class="border mx-auto w-3/4" v-show="page == 1">
+      <h3 class="m-4 ml-10 text-2xl">Normal Input</h3>
+      <img src="normal.png" class="ml-10 my-6">
+      <div class="flex content-around">
+        <input class="border center py-2 px-4 m-10 mt-0 w-3/4" v-model="first">
+        <input class="border center py-2 px-4 m-10 mt-0 w-3/4" v-model="first">
+      </div>
+    </div>
+
+    <!-- Custom Input -->
+    <div class="border mx-auto w-3/4" v-show="page == 2">
+      <h3 class="m-4 ml-10 text-2xl">Custom Input</h3>
+      <img src="custom.png" class="ml-10 my-6">
+      <div class="flex content-around">
+        <CustomInput class="border center py-2 px-4 m-10 mt-0 w-3/4" v-model="second" />
+        <CustomInput class="border center py-2 px-4 m-10 mt-0 w-3/4" v-model="second" />
+      </div>
+    </div>
+
+    <!-- Encapsulate Logic -->
+    <div class="border mx-auto w-3/4" v-show="page == 3">
+      <h3 class="m-4 ml-10 text-2xl">Encapsulate Logic</h3>
+      <img src="caps.png" class="ml-10 my-6">
+      <div class="flex content-around">
+        <AllCaps class="border center py-2 px-4 m-10 mt-0 w-3/4" v-model="third" />
+        <AllCaps class="border center py-2 px-4 m-10 mt-0 w-3/4" v-model="third" />
+      </div>
+    </div>
+
+    <!-- Managing Component State -->
+    <div class="border mx-auto w-3/4" v-show="page == 4">
+      <h3 class="m-4 ml-10 text-2xl">Managing Component State</h3>
+      <img src="name.png" class="ml-10 my-6">
+      <div class="flex content-around">
+        <PersonName class="border center py-2 px-4 m-10 mt-0 w-3/4" v-model="name" />
+        <PersonName class="border center py-2 px-4 m-10 mt-0 w-3/4" v-model="name" />
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mx-auto mt-12 w-3/4">
+      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" @click="page = page - 1" :disabled="page == 1">
+        Previous
+      </button>
+      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-8" @click="page = page + 1" :disabled="page == 4">
+        Next
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CustomInput from './components/CustomInput.vue'
+import AllCaps from './components/AllCaps.vue'
+import PersonName from './components/PersonName.vue'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      page: 1,
+      first: '',
+      second: '',
+      third: '',
+      name: '',
+    };
+  },
   components: {
-    HelloWorld
-  }
+    CustomInput,
+    AllCaps,
+    PersonName,
+  },
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
