@@ -41,12 +41,22 @@
       </div>
     </div>
 
+    <!-- Composing Multiple Inputs -->
+    <div class="border mx-auto w-3/4" v-show="page == 5">
+      <h3 class="m-4 ml-10 text-2xl">Composing Multiple Inputs</h3>
+      <img src="address.png" class="ml-10 my-6">
+      <div class="flex content-around">
+        <Address class="border center py-2 px-4 m-10 mt-0 w-3/4" v-model="address" />
+        <Address class="border center py-2 px-4 m-10 mt-0 w-3/4" v-model="address" />
+      </div>
+    </div>
+
     <!-- Buttons -->
     <div class="mx-auto mt-12 w-3/4">
       <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" @click="page = page - 1" :disabled="page == 1">
         Previous
       </button>
-      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-8" @click="page = page + 1" :disabled="page == 4">
+      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-8" @click="page = page + 1" :disabled="page == 5">
         Next
       </button>
     </div>
@@ -54,9 +64,10 @@
 </template>
 
 <script>
-import CustomInput from './components/CustomInput.vue'
-import AllCaps from './components/AllCaps.vue'
-import PersonName from './components/PersonName.vue'
+import CustomInput from './components/CustomInput.vue';
+import AllCaps from './components/AllCaps.vue';
+import PersonName from './components/PersonName.vue';
+import Address from './components/Address.vue';
 
 export default {
   name: 'app',
@@ -67,12 +78,19 @@ export default {
       second: '',
       third: '',
       name: '',
+      address: {
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+      },
     };
   },
   components: {
     CustomInput,
     AllCaps,
     PersonName,
+    Address,
   },
 }
 </script>
