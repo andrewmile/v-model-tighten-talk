@@ -43,7 +43,7 @@ export default {
   },
   watch: {
     value(newValue) {
-      this.name = newValue;
+      this.address = newValue;
     },
   },
 }
