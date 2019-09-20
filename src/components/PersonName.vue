@@ -6,8 +6,10 @@
 export default {
   name: 'AllCaps',
   props: {
-    value: String,
-    required: true,
+    value: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {

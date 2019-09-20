@@ -6,8 +6,10 @@
 export default {
   name: 'CustomInput',
   props: {
-    value: String,
-    required: true,
+    value: {
+      type: String,
+      required: true,
+    },
   },
 }
 </script>
